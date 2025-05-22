@@ -1,0 +1,106 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+@import "tailwindcss";
+
+:root {
+  --font-geist-sans: "Geist Sans";
+  --font-geist-mono: "Geist Mono";
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* styles/globals.css */
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  opacity: 1;
+  margin: 4px 0 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ff7f50; /* Blue color */
+}
+
+/* styles/globals.css */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 1s ease-out forwards;
+}
+
+/* styles/globals.css */
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #ccc;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #3b82f6; /* Blue color for active dot */
+}
+
+.swiper-pagination-bullet:hover {
+  transform: scale(2); /* Double the size on hover */
+}
+
+div[aria-label="Map"] div[role="dialog"] {
+  color: black;
+}
+
+.directions {
+  position: absolute;
+  width: 275px;
+  top: 0px;
+  right: 0px;
+  padding: 1.25rem;
+  padding-top: 0px;
+  margin: 0.25rem;
+  color: white;
+  background-color: #2d3748;
+  border-radius: 0.25rem;
+}
+
+ul {
+  padding: 0px;
+  padding-left: 1.5rem;
+  margin: 0px;
+}
+
+li button {
+  color: #f6e05e;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
