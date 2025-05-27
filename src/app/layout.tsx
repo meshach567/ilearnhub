@@ -7,6 +7,14 @@ import Navbar from "@/components/base/Navbar";
 import Footer from "@/components/base/Footer";
 import { Suspense } from "react";
 import Loading from "@/components/ui/Loading";
+import { ClerkProvider } from "@clerk/nextjs";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "ILearnHub",
@@ -19,28 +27,37 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        />
-      </head>
-      <body
-        className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
-      >
-        <Navbar />
-        <Suspense
-          fallback={
-            <div className="flex justify-center items-center h-screen">
-              <Loading />
-            </div>
-          }
+    <ClerkProvider>
+      <html lang="en">
+        <head>
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          />
+        </head>
+        <body
+          className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
         >
-          {children}
-        </Suspense>
-        <Footer />
-      </body>
-    </html>
+          <Navbar />
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center h-screen">
+                <Loading />
+              </div>
+            }
+          >
+            <SignedOut>
+              <SignInButton />
+              <SignUpButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+            {children}
+          </Suspense>
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
