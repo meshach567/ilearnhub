@@ -10,30 +10,30 @@ const ContactMessagesAdmin = () => {
   const [filter, setFilter] = useState<"all" | "unread" | "read">("all");
 
   useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        let query = supabase
+          .from("contact_messages")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        if (filter !== "all") {
+          query = query.eq("status", filter);
+        }
+
+        const { data, error } = await query;
+
+        if (error) throw error;
+        setMessages(data || []);
+      } catch (error) {
+        console.error("Error fetching messages:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchMessages();
   }, [filter]);
-
-  const fetchMessages = async () => {
-    try {
-      let query = supabase
-        .from("contact_messages")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-      if (filter !== "all") {
-        query = query.eq("status", filter);
-      }
-
-      const { data, error } = await query;
-
-      if (error) throw error;
-      setMessages(data || []);
-    } catch (error) {
-      console.error("Error fetching messages:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const updateMessageStatus = async (id: string, status: string) => {
     try {
