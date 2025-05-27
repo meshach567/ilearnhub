@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   output: "standalone",
-
   reactStrictMode: true,
   images: {
     localPatterns: [
@@ -20,15 +18,15 @@ const nextConfig: NextConfig = {
         pathname: "/plus-assets/**",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        port: "",
+        pathname: "/**",
+        search: "",
+      },
     ],
-    domains: [
-      "media.graphassets.com", // For Hygraph (formerly GraphCMS)
-      "media.graphcms.com",
-    ],
-  },
-  env: {
-    NEXT_PUBLIC_GRAPHCMS_ENDPOINT: process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT,
-    GRAPHCMS_TOKEN: process.env.GRAPHCMS_TOKEN,
+    // Remove the deprecated 'domains' array
   },
 };
 
