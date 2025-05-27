@@ -6,16 +6,7 @@ import "./globals.css";
 import Navbar from "@/components/base/Navbar";
 import Footer from "@/components/base/Footer";
 import { Suspense } from "react";
-import Loading from "./loading";
-// const geistSans = Geist({
-//   variable: '--font-geist-sans',
-//   subsets: ['latin'],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: '--font-geist-mono',
-//   subsets: ['latin'],
-// });
+import Loading from "@/components/ui/Loading";
 
 export const metadata: Metadata = {
   title: "ILearnHub",
