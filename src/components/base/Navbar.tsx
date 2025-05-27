@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -42,14 +41,30 @@ export default function Header() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image
+            {/* <Image
               src="/assets/images/walton.png" // Replace with your logo path
               alt="iLearnHub"
               width={120}
               height={40}
               className="h-10 w-auto object-center object-cover"
               priority
-            />
+            /> */}
+            <svg
+              className="w-8 h-8 text-gray-900"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z" />
+              <path
+                d="M8 12l2 2 4-4"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+              />
+            </svg>
+            <span className="text-2xl font-bold text-[#4B0082] ml-2">
+              iLearnHub
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -96,7 +111,7 @@ export default function Header() {
             type="button"
             className="hidden lg:inline-block bg-[#4B0082] text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300"
           >
-            Sign Up
+            <Link href="/login">Login</Link>
           </button>
 
           {/* Mobile Menu Button */}
