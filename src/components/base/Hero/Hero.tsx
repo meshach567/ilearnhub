@@ -4,14 +4,14 @@ import Image from "next/image";
 import Elean from "../../../assets/images/elearn.png";
 import { useEffect, useState } from "react";
 
+// Words to cycle through for "Smart" and "Future"
+const smartWords = ["Savvy", "Ingenious", "Adaptive"];
+const futureWords = ["Next-gen", "Visionary", "Forthcoming"];
+
 const Hero = () => {
   // State for dynamic text animation
   const [smartText, setSmartText] = useState("Smart");
   const [futureText, setFutureText] = useState("Future");
-
-  // Words to cycle through for "Smart" and "Future"
-  const smartWords = ["Savvy", "Ingenious", "Adaptive"];
-  const futureWords = ["Next-gen", "Visionary", "Forthcoming"];
 
   useEffect(() => {
     const smartInterval = setInterval(() => {
@@ -35,14 +35,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section
-      className="bg-[#FFF8DC] py-12 md:py-24"
-      style={{
-        backgroundImage: "url(../../../assets/images/cornik.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+    <section className="hero-section bg-[#FFF8DC] py-12 md:py-24">
       {" "}
       {/* Cornsilk background */}
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
